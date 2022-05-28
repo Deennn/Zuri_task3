@@ -1,37 +1,28 @@
-from tokenize import String
- 
-class Student:
-    # [assignment] Skeleton class. Add your code here
-    def __init__(this, name, age, tracks, score):
-        this.name = str(name)
-        this.age = int(age)
-        this.tracks = tracks
-        this.score = float(score)
+# Read text from a file, and count the occurence of words in that text
+# Example:
+# count_words("The cake is done. It is a big cake!") 
+# --> {"cake":2, "big":1, "is":2, "the":1, "a":1, "it":1}
+
+def read_file_content(filename):
+    # [assignment] Add your code here 
+    f =  open(filename)
+    text = f.read()
     
-    def change_name(this, new_name):
-        if type(new_name) != str:
-            return "name must be string"
-        this.name = str(new_name)
- 
-    def change_age(this, new_age):
-        if type(new_age != int):
-            return "age must be an integer"
-        this.age = int(new_age)
+    return text
+
+
+def count_words():
+    text = read_file_content("./story.txt")
+    # [assignment] Add your code here
+    list = text.split()
     
-    def add_track(this, new_track):
-        if (type(new_track) != str):
-            return "track must be a string"
-        this.tracks.append(new_track)
- 
-    def get_score(this):
-        return this.score
- 
- 
- 
-Bob = Student(name="Bob", age=26, tracks=["FE","BE"],score=20.90)
- 
-# Expected methods
-Bob.change_name("Michael")
-Bob.change_age(34)
-Bob.add_track("UI/UX")
-Bob.get_score()
+    words_dictionary = {}
+
+    for word in list:
+        words_dictionary[word] = list.count(word)
+
+    return words_dictionary
+
+
+print(read_file_content("./story.txt"))
+print(count_words())
